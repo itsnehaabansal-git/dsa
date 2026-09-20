@@ -43,7 +43,7 @@ public:
        for(int i =0; i< n; i++){
         int left = i - ps[i];
         int right = ns[i] - i;
-       t = (t+ ((long long)left* right* arr[i]))%mod;
+       t = (t + (long long)left * right * arr[i]) % mod;
        };
 
 
