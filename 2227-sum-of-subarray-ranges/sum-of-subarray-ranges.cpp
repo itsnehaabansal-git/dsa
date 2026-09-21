@@ -84,7 +84,7 @@ public:
             long long  right = nge[i] - i;
             t2 = t2 + (left * right * nums[i]);
         }
-
-        return t2 - t1;
+         long long s = t2-t1;
+        return s;
     }
 };
