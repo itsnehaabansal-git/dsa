@@ -10,39 +10,27 @@
  * };
  */
 class Solution {
+    unordered_map<int,int>mp;
+TreeNode* solve(vector<int>&preorder,vector<int>&inorder,int prestart, int preend, int instart, int inend ){
+
+    if(prestart > preend or instart > inend){
+        return NULL;
+    }
+
+  int rootval = preorder[prestart];
+  TreeNode* root = new TreeNode(rootval);
+  int rootindex = mp[rootval];
+  int leftnodes = rootindex - instart;
+  root->left = solve(preorder,inorder,prestart+1,prestart + leftnodes ,instart , rootindex-1);
+  root->right = solve(preorder, inorder , prestart + leftnodes +1 , preend, rootindex+1, inend);
+return root;
+
+}
 public:
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-        
-        if(preorder.size() == 0) {
-            return NULL;
+        for(int i = 0 ; i< inorder.size(); i++){
+          mp[inorder[i]]= i;
         }
-
-        int rootValue = preorder[0];
-
-        TreeNode* root = new TreeNode(rootValue);
-
-        int index = 0;
-
-        while(inorder[index] != rootValue) {
-            index++;
-        }
-
-        vector<int> leftPreorder(preorder.begin() + 1,
-                                 preorder.begin() + 1 + index);
-
-        vector<int> rightPreorder(preorder.begin() + 1 + index,
-                                  preorder.end());
-
-        vector<int> leftInorder(inorder.begin(),
-                                inorder.begin() + index);
-
-        vector<int> rightInorder(inorder.begin() + index + 1,
-                                 inorder.end());
-
-        root->left = buildTree(leftPreorder, leftInorder);
-
-        root->right = buildTree(rightPreorder, rightInorder);
-
-        return root;
+        return solve(preorder,inorder,0,preorder.size()-1 , 0, inorder.size()-1);
     }
 };
