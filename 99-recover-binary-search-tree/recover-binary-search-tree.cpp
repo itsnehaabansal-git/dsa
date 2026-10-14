@@ -21,7 +21,7 @@ class Solution {
             return;
         }
         inorder(root->left);
-        if(prev->val >root->val){
+        if(prev != NULL and prev->val >root->val){
             if(first == NULL){
                 first = prev;
                 middle = root;
