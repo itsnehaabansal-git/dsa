@@ -1,3 +1,11 @@
+// sorted the strings because we want to compare the smallest and largest string to find the common prefix for ex if we have 
+// aaa aa aaa
+// if we compare first and last string we will give ans as aaa 
+//  but it is aa
+
+
+// longest common prefix
+
 class Solution {
 public:
     string longestCommonPrefix(vector<string>& strs) {
