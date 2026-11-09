@@ -17,7 +17,7 @@ class Solution {
         int j = mid + 1; // sorted arr B start
         vector<int> temp;
         while (i <= mid and j <= high) {
-            if (nums[i] < nums[j]) {
+            if (nums[i] <= nums[j]) {
                 temp.push_back(nums[i]);
                 i++;
             } else {
