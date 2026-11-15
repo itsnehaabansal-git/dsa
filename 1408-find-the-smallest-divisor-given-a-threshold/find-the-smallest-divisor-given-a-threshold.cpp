@@ -9,13 +9,14 @@ class Solution {
 public:
     int smallestDivisor(vector<int>& nums, int threshold) {
         int low = 1;
-        int ans = nums[0];
-       for(int i = 1 ; i< nums.size() ; i++){
-           if(nums[i]>ans){
-            ans = nums[i];
-           }
-       }
-       int high = ans;
+    //     int ans = nums[0];
+    //    for(int i = 1 ; i< nums.size() ; i++){
+    //        if(nums[i]>ans){
+    //         ans = nums[i];
+    //        }
+    //    }
+    //    int high = ans;
+    int high = *max_element(nums.begin(), nums.end());
        int  finalans =-1;
        while(low<= high){
         int mid = (low+high)/2;
